@@ -1,0 +1,37 @@
+extends layout
+block css 
+  link(rel="stylesheet", href="/stylesheets/style1.css")
+block content
+  header
+    p HotTalk 
+      span.icon-y.far.fa-comment
+  main
+    .contents
+      .main_content
+        h1 HotTalk
+        p 色々な人と交流して
+          span 新たな道
+          | を切り開こう!
+        p 他者の考えに触れたときあなたの脳内で
+          span 革新
+          | が起こる!
+  .login_part
+    .contents
+      a(class='new_link' href='/sign-up') 新規登録
+      a(class='login_link' href='/login') ログイン
+      a(class='guest_link' href='/select') ゲストで閲覧
+  .contents
+    .introduce
+      h2 HotTalkとは?
+      p →　日常会話から専門的な会話まで楽しむサイトです
+      h3 point
+      ul
+        li Lorem ipsum dolor sit amet consectetur adipisicing elit. In,expedita rem? Optio maxime possimus eius. Rem, dicta. Alias, ametsimilique odit laudantium tempore eaque nemo, vitae corporisminima esse non.
+        li Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequidolorem a reiciendis accusamus quasi officiis ipsam illumpossimus reprehenderit animi. Sequi voluptate dolorum autem autfuga id vel nemo ullam.
+        li Lorem ipsum dolor sit amet consectetur adipisicing elit. Nonconsectetur atque nobis deleniti soluta facilis ut doloribus.Perspiciatis, neque explicabo! Quam corporis quisquamperspiciatis tempora tenetur. Nulla minima odio quidem!
+  br
+  footer
+    .footer_content
+      ul
+        li このサイトについて
+        li お問い合わせ
