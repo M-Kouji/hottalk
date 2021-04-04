@@ -1,2 +1,22 @@
 extends layout 
 
+block css 
+  link(rel="stylesheet", href="/stylesheets/login.css")
+
+block header
+  header
+    a(href="/") HotTalk 
+      span.icon-y.far.fa-comment
+
+block content 
+  main
+    .main_content
+      h1 ログイン
+      h5=error 
+      form(action="/login" method="post")
+        p ユーザー名
+        input(type="text" name="name" value="" placeholder="username")
+        p パスワード
+        input(type="password" name="pass" value="" placeholder="password")
+        br
+        button(type="submit") ログイン
