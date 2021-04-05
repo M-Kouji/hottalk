@@ -28,6 +28,15 @@ app.use(
     saveUninitialized: false 
   })
 );
+app.use((req,res,next) => {
+  if(req.session.userId === undefined){
+    console.log('ログインしていません');
+  } else {
+    console.log('ログインしています');
+    res.locals.username = req.session.username;
+  }
+  next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
