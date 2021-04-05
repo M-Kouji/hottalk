@@ -9,6 +9,7 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
+var themeRouter = require('./routes/theme');
 
 var User = require('./models/user');
 var Comment = require('./models/comment');
@@ -16,7 +17,7 @@ const { doesNotMatch } = require('assert');
 const router = require('./routes/index');
 User.sync().then(()=>{
   Comment.belongsTo(User, {foreignKey: 'saidBy'});
-  User.sync();
+  Comment.sync();
 });
 
 var app = express();
@@ -51,6 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login',loginRouter);
+app.use('/theme',themeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

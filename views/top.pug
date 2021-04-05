@@ -4,6 +4,8 @@ block css
 
 block header
   header
+    if locals.username
+      p #{locals.username}  さん　　
 block content
   main
     .contents
@@ -17,18 +19,28 @@ block content
           | が起こる!
   .login_part
     .contents
-      a(class='new_link' href='/signup') 新規登録
-      a(class='login_link' href='/login') ログイン
-      a(class='guest_link' href='/select') ゲストで閲覧
+      if locals.username
+        a(class='login_link' href='/theme') テーマ選択へ
+      else
+        a(class='new_link' href='/signup') 新規登録
+        a(class='login_link' href='/login') ログイン
+        a(class='guest_link' href='/select') ゲストで閲覧
   .contents
     .introduce
       h2 HotTalkとは?
       p →　日常会話から専門的な会話まで楽しむサイトです
-      h3 point
+      h3 Theme
+      h5 3つのテーマで会話しましょう!
       ul
-        li Lorem ipsum dolor sit amet consectetur adipisicing elit. In,expedita rem? Optio maxime possimus eius. Rem, dicta. Alias, ametsimilique odit laudantium tempore eaque nemo, vitae corporisminima esse non.
-        li Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequidolorem a reiciendis accusamus quasi officiis ipsam illumpossimus reprehenderit animi. Sequi voluptate dolorum autem autfuga id vel nemo ullam.
-        li Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum amet ex porro voluptas quo quis eaque provident veniam neque! Ut temporibus, iure non cum minus perspiciatis accusantium beatae. Culpa, impedit.
+        li 
+          h3 理系
+          |　数学・物理学・化学・生物学などの自然界を研究の対象とする学問
+        li
+          h3 文系
+          | 政治学・商学・文学・法学などの人間の活動を研究の対象とする学問
+        li 
+          h3 日常会話
+          | いろんな愚痴が蔓延るテーマ
   br
   footer
     .footer_content

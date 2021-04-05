@@ -18,20 +18,18 @@ router.get('/',(req,res,next)=>{
 });
 
 router.post('/',(req,res,next)=>{
-  console.log(`入力したのは${req.body.password}`);
   if(req.body.user_name && req.body.password){
     User.findAll({
       where: {
         username: req.body.user_name
       }
     }).then(user => {
-      console.log(`取得したのは${user.password}`);
       if(user){
         if(req.body.password === user[0].password){
           message = `ようこそ ${req.body.user_name} さん`;
           req.session.userId = user[0].userId;
           req.session.username = req.body.user_name;
-          res.redirect('/login');
+          res.redirect('/theme');
         } else {
           message = error_message;
           res.redirect('/login');

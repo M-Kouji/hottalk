@@ -18,6 +18,7 @@ header p {
   font-weight: bold;
   padding-left: 5px;
   line-height: 40px;
+  float: right;
 }
 .contents {
   margin: 0 auto;
@@ -46,7 +47,7 @@ main {
   color: rgba(248, 0, 0, 0.788);
 }
 .main_content span{
-  color: rgb(16, 137, 207);
+  color: rgb(207, 16, 16);
 }
 .login_part {
   height: 60px;

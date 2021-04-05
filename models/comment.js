@@ -6,10 +6,10 @@ const Comment = loader.database.define(
   'comments',
   {
     commnetId: {
-      type: Sequelize.UUID,
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
       allowNull: false,
-      autoIncrement: true
     },
     content: {
       type: Sequelize.STRING,
