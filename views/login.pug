@@ -12,11 +12,11 @@ block content
   main
     .main_content
       h1 ログイン
-      h5=error 
+      h5 #{mes}
       form(action="/login" method="post")
         p ユーザー名
-        input(type="text" name="name" value="" placeholder="username")
+        input(type="text" name="user_name" value="" placeholder="username")
         p パスワード
-        input(type="password" name="pass" value="" placeholder="password")
+        input(type="password" name="password" value="" placeholder="password")
         br
         button(type="submit") ログイン

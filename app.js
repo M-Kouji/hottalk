@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var helmet = require('helmet');
+var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -20,6 +21,13 @@ User.sync().then(()=>{
 
 var app = express();
 app.use(helmet());
+app.use(
+  session({ 
+    secret: 'my_secret_key', 
+    resave: false, 
+    saveUninitialized: false 
+  })
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
