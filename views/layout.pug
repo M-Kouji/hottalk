@@ -7,5 +7,9 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     block css
   body
-    block header
+    header
+      a(href="/") HotTalk 
+      span.icon-y.far.fa-comment
+      if locals.username
+        p #{locals.username}  さん　　
     block content

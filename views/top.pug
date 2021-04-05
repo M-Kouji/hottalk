@@ -2,10 +2,6 @@ extends layout
 block css 
   link(rel="stylesheet", href="/stylesheets/top.css")
 
-block header
-  header
-    if locals.username
-      p #{locals.username}  さん　　
 block content
   main
     .contents

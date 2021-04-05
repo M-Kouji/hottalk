@@ -31,8 +31,7 @@ router.post('/',(req,res,next)=>{
           req.session.username = req.body.user_name;
           res.redirect('/theme');
         } else {
-          message = error_message;
-          res.redirect('/login');
+          errorDisplay(req,res);
         }
       } else {
         errorDisplay(req,res);
