@@ -1,0 +1,82 @@
+html body {
+  margin: 0;
+  background-color: #f6faff;
+  height: 100%;
+}
+
+h1 {
+  padding-top: 20px;
+  letter-spacing: 3px;
+  text-align: center;
+}
+h2{
+  text-align: center;
+}
+
+.content{
+  margin-top: 50px;
+}
+.chat_contents {
+  min-height: 400px;
+  width: 90%;
+  margin: 0 auto;
+  border: gray solid 2px;
+  /* overflow: scroll; */
+  background-image: url(../bgi.JPG);
+  background-attachment: fixed;
+}
+.myContent {
+  text-align: left;
+}
+.otherContent {
+  text-align: right;
+}
+.name_tag {
+  padding: 2px;
+  margin-bottom: 5px;
+  border: gray solid 1px;
+  border-radius: 10px;
+  display: inline-block;
+}
+.content_tag {
+  padding: 7px;
+  margin-bottom: 5px;
+  border: rgb(228, 227, 227) solid 1px;
+  border-radius: 10px 10px;
+  display: inline-block;
+  box-shadow: 1px 1px rgb(155, 154, 154);
+}
+.myContent span.name_tag {
+  background-color: rgb(166, 223, 250);
+}
+.otherContent span.name_tag {
+  background-color: rgb(182, 255, 219);
+}
+.myContent span.content_tag {
+  background-color: rgb(236, 236, 236);
+}
+.otherContent span.content_tag {
+  background-color: rgb(236, 236, 236);
+}
+form {
+  width: 80%;
+  margin: 10px auto;
+  text-align: center;
+}
+textarea {
+  border-radius: 2px;
+  width: 91%;
+}
+input {
+  padding: 5px 10px;
+  background-color: rgb(166, 223, 250);
+  border: gray solid 1px;
+  border-radius: 3px;
+}
+
+.img {
+  display: inline-block;
+  background: url(../circle.png);
+  padding: 3px;
+  background-size: 100%;
+}

@@ -10,14 +10,15 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var themeRouter = require('./routes/theme');
-var signup = require('./routes/signup');
+var signupRouter = require('./routes/signup');
+var talkRouter = require('./routes/talk');
 
 var User = require('./models/user');
 var Comment = require('./models/comment');
 const { doesNotMatch } = require('assert');
 const router = require('./routes/index');
 User.sync().then(()=>{
-  Comment.belongsTo(User, {foreignKey: 'saidBy'});
+  Comment.belongsTo(User, {foreignKey: 'saidById'});
   Comment.sync();
 });
 
@@ -54,7 +55,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login',loginRouter);
 app.use('/theme',themeRouter);
-app.use('/signup',signup);
+app.use('/signup',signupRouter);
+app.use('/talk',talkRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,23 @@
+extends layout 
+block css 
+  link(rel="stylesheet", href="/stylesheets/talk.css")
+block content 
+  .content
+    .chat_contents
+      if comments
+        each comment in comments 
+          if comment.user.username == locals.username
+            .myContent
+              p.name_tag #{comment.user.username}
+              span.content_tag #{comment.content}
+              span.date_tag #{comment.updateAt}
+          else 
+            .otherContent
+              p.name_tag #{comment.user.username}
+              span.date_tag #{comment.updateAt}
+              span.content_tag #{comment.content}
+      else
+        p 何もない
+    form(action=`/talk/${themeId}` method='post')
+      textarea(name='comment' rows='3' placeholder='自由に話しまょう')
+      input.fas(type='submit' value='　　　送信　　')

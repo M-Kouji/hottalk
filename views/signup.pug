@@ -6,7 +6,6 @@ block content
     div(class='main_content')
       h1 新規登録
       h5 #{msg} 
-      h5 #{locals.username}
       form(action='/signup' method='post')
         p アカウント名
         input(type='text' name='user_name' value='' placeholder='username')

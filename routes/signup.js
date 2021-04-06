@@ -30,7 +30,7 @@ router.post('/',(req,res,next) => {
           req.session.username = req.body.user_name;
           req.session.userId = user[0].userId;
           message = null;
-          res.redirect('/signup');
+          res.redirect('/theme');
         } else {
           message = 'error';
           errorDisplay(req,res);

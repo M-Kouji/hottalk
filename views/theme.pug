@@ -6,6 +6,6 @@ block content
     h2 ようこそ#{locals.username}さん
     h2 話し合いたいテーマを選択しましょう
     .selectContent 
-      a.rikei.theme 理系
-      a.bunkei.theme 文系
-      a.daily.theme その他
+      a.rikei.theme(href='/talk/rikei') 理系
+      a.bunkei.theme(href='/talk/bunkei') 文系
+      a.daily.theme(href='/talk/other') その他

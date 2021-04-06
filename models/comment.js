@@ -5,7 +5,7 @@ const Sequelize = loader.Sequelize;
 const Comment = loader.database.define(
   'comments',
   {
-    commnetId: {
+    commentId: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
@@ -15,15 +15,15 @@ const Comment = loader.database.define(
       type: Sequelize.STRING,
       allowNull: false
     },
-    saidBy: {
+    saidById: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
-    themaId: {
-      type: Sequelize.INTEGER,
+    themeId: {
+      type: Sequelize.STRING,
       allowNull: false
     },
-    updateBy: {
+    updateAt: {
       type: Sequelize.DATE,
       allowNull: false
     }
@@ -33,7 +33,7 @@ const Comment = loader.database.define(
     timestamps: false,
     indexes: [
       {
-        fields: ['themaId']
+        fields: ['themeId']
       }
     ]
   }
