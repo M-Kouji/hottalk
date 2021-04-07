@@ -7,15 +7,15 @@ const session = require('express-session');
 const error_message = 'ユーザー名もしくはパスワードが間違っています';
 const bcrypt = require('bcrypt');
 var message = null;
+var flg = 0;
 
 router.get('/',(req,res,next)=>{
-  res.render('login.pug',{mes: message})
-  console.log(message);
-  User.findAll().then((user)=>{
-    user.forEach(users => {
-      console.log(`ID:${users.userId}　Name:${users.username} Pass:${users.password}\n`);
-    });
-  })
+  if(flg === 1){
+    res.render('login.pug',{mes: message})
+    flg = 0;
+  } else {
+    res.render('login.pug',{mes: null})
+  }
 });
 
 router.post('/',(req,res,next)=>{
@@ -39,7 +39,6 @@ router.post('/',(req,res,next)=>{
         errorDisplay(req,res);
       }
     }).catch(error => {
-      console.log('error処理');
       errorDisplay(req,res);
     });
   } else {
@@ -51,6 +50,7 @@ const errorDisplay = (req,res) => {
   message = error_message;
   res.redirect('/login');
   req.session.destroy();
+  flg = 1;
 };
 
 module.exports = router;
