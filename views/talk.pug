@@ -22,7 +22,7 @@ block content
       form(action=`/talk/${themeId}` method='post')
         input(type="hidden" name="_csrf" value!=csrfToken)
         textarea(name='comment' rows='3' placeholder='自由に話しまょう')
-        input.fas(type='submit' value='　　　送信　　')
+        input.fas(type='submit' value='　　送信　　')
     else 
       .register
         h3  
