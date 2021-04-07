@@ -21,7 +21,6 @@ router.get('/:themeId',(req,res,next) => {
   }).then((comment) => {
     if(comment){
       console.log(comment);
-      console.log(req.session.username);
       res.render('talk.pug',{comments: comment,themeId: req.params.themeId});
     } else {
       console.log(`${req.params.themeId}  errorComment1`);

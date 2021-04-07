@@ -8,8 +8,15 @@ html
     block css
   body
     header
-      a(href="/") HotTalk 
-      span.icon-y.far.fa-comment
+      .leftContent 
+        a(href="/") HotTalk 
+        span.icon-y.far.fa-comment
       if locals.username
-        p #{locals.username}  さん　　
+        .rightContent
+          span #{locals.username}　　
+          a(href="/logout") ログアウト 
+      else
+        .rightContent 
+          span  ゲスト 
+          a(href="/signup") 新規登録 
     block content

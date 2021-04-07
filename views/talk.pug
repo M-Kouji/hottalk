@@ -6,15 +6,16 @@ block content
     .chat_contents
       if comments
         each comment in comments 
+          - var date =  comment.updateAt
           if comment.user.username == locals.username
             .myContent
               p.name_tag #{comment.user.username}
               span.content_tag #{comment.content}
-              span.date_tag #{comment.updateAt}
+              span.date_tag #{date.getMonth()+1}/#{date.getDate()} #{date.getHours()}:#{date.getMinutes()}
           else 
             .otherContent
+              span.date_tag #{date.getMonth()+1}/#{date.getDate()} #{date.getHours()}:#{date.getMinutes()}
               p.name_tag #{comment.user.username}
-              span.date_tag #{comment.updateAt}
               span.content_tag #{comment.content}
       else
         p 何もない

@@ -4,8 +4,8 @@ const router = express.Router();
 const User = require('../models/user');
 const { Op } = require('sequelize');
 const session = require('express-session');
-var message = null;
 const error_message = 'ユーザー名もしくはパスワードが間違っています';
+var message = null;
 
 router.get('/',(req,res,next)=>{
   res.render('login.pug',{mes: message})
@@ -26,7 +26,6 @@ router.post('/',(req,res,next)=>{
     }).then(user => {
       if(user){
         if(req.body.password === user[0].password){
-          message = `ようこそ ${req.body.user_name} さん`;
           req.session.userId = user[0].userId;
           req.session.username = req.body.user_name;
           res.redirect('/theme');

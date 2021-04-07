@@ -12,6 +12,7 @@ var loginRouter = require('./routes/login');
 var themeRouter = require('./routes/theme');
 var signupRouter = require('./routes/signup');
 var talkRouter = require('./routes/talk');
+var logoutRouter = require('./routes/logout');
 
 var User = require('./models/user');
 var Comment = require('./models/comment');
@@ -34,6 +35,7 @@ app.use(
 app.use((req,res,next) => {
   if(req.session.userId === undefined){
     console.log('ログインしていません');
+    res.locals.username = null;
   } else {
     console.log('ログインしています');
     res.locals.username = req.session.username;
@@ -57,6 +59,7 @@ app.use('/login',loginRouter);
 app.use('/theme',themeRouter);
 app.use('/signup',signupRouter);
 app.use('/talk',talkRouter);
+app.use('/logout',logoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
