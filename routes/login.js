@@ -5,6 +5,7 @@ const User = require('../models/user');
 const { Op } = require('sequelize');
 const session = require('express-session');
 const error_message = 'ユーザー名もしくはパスワードが間違っています';
+const bcrypt = require('bcrypt');
 var message = null;
 
 router.get('/',(req,res,next)=>{
@@ -25,13 +26,15 @@ router.post('/',(req,res,next)=>{
       }
     }).then(user => {
       if(user){
-        if(req.body.password === user[0].password){
-          req.session.userId = user[0].userId;
-          req.session.username = req.body.user_name;
-          res.redirect('/theme');
-        } else {
-          errorDisplay(req,res);
-        }
+        bcrypt.compare(req.body.password, user[0].password, (error,isEqual) => {
+          if(isEqual){
+            req.session.userId = user[0].userId;
+            req.session.username = req.body.user_name;
+            res.redirect('/theme');
+          } else {
+            errorDisplay(req,res);
+          }
+        });
       } else {
         errorDisplay(req,res);
       }

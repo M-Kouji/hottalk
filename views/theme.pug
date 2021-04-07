@@ -3,8 +3,12 @@ block css
   link(rel="stylesheet", href="/stylesheets/theme.css")
 block content 
   main
-    h2 ようこそ#{locals.username}さん
-    h2 話し合いたいテーマを選択しましょう
+    if locals.username
+      h2 ようこそ#{locals.username}さん
+      h2 話し合いたいテーマを選択しましょう
+    else
+      h2 ようこそゲストさん
+      h2 閲覧したいテーマを選びましょう
     .selectContent 
       a.rikei.theme(href='/talk/rikei') 理系
       a.bunkei.theme(href='/talk/bunkei') 文系

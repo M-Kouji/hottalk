@@ -9,16 +9,21 @@ block content
           - var date =  comment.updateAt
           if comment.user.username == locals.username
             .myContent
-              p.name_tag #{comment.user.username}
-              span.content_tag #{comment.content}
               span.date_tag #{date.getMonth()+1}/#{date.getDate()} #{date.getHours()}:#{date.getMinutes()}
+              span.content_tag #{comment.content}
           else 
             .otherContent
-              span.date_tag #{date.getMonth()+1}/#{date.getDate()} #{date.getHours()}:#{date.getMinutes()}
               p.name_tag #{comment.user.username}
               span.content_tag #{comment.content}
+              span.date_tag #{date.getMonth()+1}/#{date.getDate()} #{date.getHours()}:#{date.getMinutes()}
       else
         p 何もない
-    form(action=`/talk/${themeId}` method='post')
-      textarea(name='comment' rows='3' placeholder='自由に話しまょう')
-      input.fas(type='submit' value='　　　送信　　')
+    if locals.username
+      form(action=`/talk/${themeId}` method='post')
+        textarea(name='comment' rows='3' placeholder='自由に話しまょう')
+        input.fas(type='submit' value='　　　送信　　')
+    else 
+      .register
+        h3  
+          a(href="/signup") 新規登録
+          |　して書き込みをしてみよう!
