@@ -5,11 +5,13 @@ const User = require('../models/user');
 const { Op } = require('sequelize');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
+const csrf = require('csurf');
+const csrfProtection = csrf({cookie: true});
 var message = null;
 
 
-router.get('/',(req,res,next) => {
-  res.render('signup.pug',{msg: message});
+router.get('/',csrfProtection,(req,res,next) => {
+  res.render('signup.pug',{msg: message,csrfToken: req.csrfToken()});
   User.findAll().then((user)=>{
     user.forEach(users => {
       console.log(`ID:${users.userId}　Name:${users.username} Pass:${users.password}\n`);
@@ -17,7 +19,7 @@ router.get('/',(req,res,next) => {
   })
 });
 
-router.post('/',(req,res,next) => {
+router.post('/',csrfProtection,(req,res,next) => {
   if(req.body.user_name && req.body.password){
     bcrypt.hash(req.body.password, 10, (error,hash) => {
       User.create({

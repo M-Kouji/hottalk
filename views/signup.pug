@@ -7,6 +7,7 @@ block content
       h1 新規登録
       h5 #{msg} 
       form(action='/signup' method='post')
+        input(type="hidden" name="_csrf" value!=csrfToken)
         p アカウント名
         input(type='text' name='user_name' value='' placeholder='username')
         p パスワード

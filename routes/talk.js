@@ -4,8 +4,10 @@ const router = express.Router();
 const User = require('../models/user');
 const Comment = require('../models/comment');
 const session = require('express-session');
+const csrf = require('csurf');
+const csrfProtection = csrf({cookie: true});
 
-router.get('/:themeId',(req,res,next) => {
+router.get('/:themeId',csrfProtection,(req,res,next) => {
   if(req.params.themeId == 'rikei' || req.params.themeId == 'bunkei' ||req.params.themeId == 'other'){
     Comment.findAll({
       include: [
@@ -22,14 +24,14 @@ router.get('/:themeId',(req,res,next) => {
     }).then((comment) => {
       if(comment){
         console.log(comment);
-        res.render('talk.pug',{comments: comment,themeId: req.params.themeId});
+        res.render('talk.pug',{comments: comment,themeId: req.params.themeId, csrfToken: req.csrfToken()});
       } else {
         console.log(`${req.params.themeId}  errorComment1`);
-        res.render('talk.pug',{themeId: req.params.themeId});
+        res.render('talk.pug',{themeId: req.params.themeId,csrfToken: req.csrfToken()});
       }
     }).catch(error => {
       console.log(`${req.params.themeId}  errorComment2`);
-      res.render('talk.pug',{themeId: req.params.themeId});
+      res.render('talk.pug',{themeId: req.params.themeId,csrfToken: req.csrfToken()});
     });
   } else {
     const err = new Error('themeId do not exist');
@@ -38,7 +40,7 @@ router.get('/:themeId',(req,res,next) => {
   }
 });
 
-router.post('/:themeId',(req,res,next) => {
+router.post('/:themeId',csrfProtection,(req,res,next) => {
   console.log(`${req.params.themeId}です`);
   const saidAt = new Date();
   Comment.create({
