@@ -22,7 +22,6 @@ h2{
   margin: 0 auto;
   border: gray solid 2px;
   /* overflow: scroll; */
-  background-image: url(../bgi.JPG);
   background-attachment: fixed;
 }
 .myContent {
