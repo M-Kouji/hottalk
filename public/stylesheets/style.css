@@ -53,3 +53,23 @@ header {
   color: white;
   text-decoration: none;
 }
+a:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.centerContent {
+  margin: 0 auto;
+  float: left;
+}
+
+.centerContent a {
+  padding: 0 10px;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 40px;
+  color: white;
+  text-decoration: none;
+  vertical-align: bottom;
+}

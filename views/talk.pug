@@ -1,8 +1,21 @@
 extends layout 
 block css 
   link(rel="stylesheet", href="/stylesheets/talk.css")
+block headerContent
+  if(themeId !== 'rikei')
+    a(href="/talk/rikei") -理系-
+  if(themeId !== 'bunkei')
+    a(href="/talk/bunkei") -文系-
+  if(themeId !== 'other')
+    a(href="/talk/other") -その他-
 block content 
   .content
+    if(themeId == 'rikei')
+      h1 〜理系〜
+    if(themeId == 'bunkei')
+      h1 〜文系〜
+    if(themeId == 'other')
+      h1 〜その他〜
     .chat_contents
       if comments
         each comment in comments 
